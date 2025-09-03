@@ -1,55 +1,106 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you:
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-
-title: che2n3jigw
-email: che2n3jigw@163.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://che2n3jigw.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  che2n3jigw
-
 # Build settings
-theme: jekyll-theme-clean-blog
 plugins:
   - jekyll-feed
+  - jekyll-archives
 
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+# 主题
+theme: minimal-mistakes-jekyll
+# 皮肤"air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin: "default"
+# 语言
+locale: "zh-CN"
+# 标题
+title: "che2n3jigw个人网站"
+# 二级标题
+subtitle: "Version 1.0"
+# 用于指定站点作者
+name: "che2n3jigw"
+# 网站描述
+description: "网站描述."
+# 网站网址
+url: "https://che2n3jigw.github.io"
+teaser: /assets/images/500x300.png
+# 网站报头徽标
+logo: "/assets/images/88x88.png"
+# 网站刊头标题
+masthead_title: "欢迎光临"
+
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      # 样式
+      layout: single
+      # 显示作者信息
+      author_profile: true
+      related: true
+      # 发布日期
+      show_date: true
+      # 阅读时间
+      read_time: true
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+  # _foo
+  - scope:
+      path: ""
+      type: foo
+    values:
+      layout: single
+# 代码块复制按钮
+enable_copy_code_button: true
+# 网站搜索
+search: true
+
+# 我的信息
+author:
+  name     : "陈靖文"
+  avatar   : "/assets/images/88x88.png"
+  bio      : "Android 应用开发者."
+  location : "广东, 中国"
+  links:
+      - label: "GitHub"
+        icon: "fab fa-fw fa-github"
+        url: "https://github.com/Che2n3JigW"
+
+# 页脚
+footer:
+  since: "© 2013 - 2025 Minimal ...timecl"
+  links:
+      - label: "GitHub"
+        icon: "fab fa-fw fa-github"
+        url: "https://github.com/Che2n3JigW"
+
+
+# 文章输出路径
+permalink: /:categories/:title/
+
+# 存档设置,该主题支持分类（类别和标签）页面。
+# 使用jekyll-archives管理类别和标签
+category_archive:
+  type: jekyll-archives
+  path: /categories/
+tag_archive:
+  type: jekyll-archives
+  path: /tags/
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layouts:
+    category: archive-taxonomy
+    tag: archive-taxonomy
+  permalinks:
+    category: /categories/:name/
+    tag: /tags/:name/
+
+# 压缩html
+compress_html:
+  clippings: all
+  ignore:
+    envs: development  # disable compression in dev environment

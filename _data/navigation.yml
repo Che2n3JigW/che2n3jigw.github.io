@@ -1,3 +1,8 @@
 main:
-  - title: "所有帖子"
+  - title: "归档"
     url: /year-archive/
+  - title: "分类"
+    url: /categories/
+  # 后面用到再显示
+  # - title: "标签"
+  #   url: /tags/

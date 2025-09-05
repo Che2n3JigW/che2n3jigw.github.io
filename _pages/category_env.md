@@ -1,7 +1,7 @@
 ---
 title: 环境搭建
 layout: category
-permalink: /categories/env/
-taxonomy: env
+permalink: /categories/Env/
+taxonomy: Env
 entries_layout: list
 ---

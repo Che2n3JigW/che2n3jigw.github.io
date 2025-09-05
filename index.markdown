@@ -19,15 +19,21 @@ feature_row:
   - image_path: assets/images/default_posts_cover.jpg
     title: "环境搭建"
     excerpt: "开发环境搭建"
-    url: "/categories/env/"
+    url: "/categories/Env/"
     btn_label: "详情"
     btn_class: "btn--primary"
   - image_path: assets/images/default_posts_cover.jpg
-    title: "安卓"
-    excerpt: "记录 Android 应用开发中的实践经验、踩坑总结和优化技巧"
-  - image_path: assets/images/default_posts_cover.jpg
-    title: "工具"
-    excerpt: "分享开发过程常用的工具与技巧"
+    title: "内网穿透"
+    excerpt: "分享内网穿透的实战操作和技巧"
+    url: "/categories/NAT-T/"
+    btn_label: "详情"
+    btn_class: "btn--primary"
+#   - image_path: assets/images/default_posts_cover.jpg
+#     title: "安卓"
+#     excerpt: "记录 Android 应用开发中的实践经验、踩坑总结和优化技巧"
+#   - image_path: assets/images/default_posts_cover.jpg
+#     title: "工具"
+#     excerpt: "分享开发过程常用的工具与技巧"
 ---
 
 {% include feature_row id="intro" type="center" %}

@@ -68,7 +68,7 @@ author:
 
 # 页脚
 footer:
-  since: "© 2013 - 2025 Minimal ...timecl"
+  since: "2025"
   links:
       - label: "GitHub"
         icon: "fab fa-fw fa-github"

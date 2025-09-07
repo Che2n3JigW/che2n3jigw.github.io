@@ -110,3 +110,6 @@ breadcrumbs: true
 # 读取文件
 include:
   - _pages
+
+# SEO
+google_site_verification : PEc6jgEeO8UQEHjdBpSFIspRc5XjSUpEoSDuaj8SBvY

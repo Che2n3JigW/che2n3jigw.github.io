@@ -23,9 +23,9 @@ feature_row:
     btn_label: "详情"
     btn_class: "btn--primary"
   - image_path: assets/images/index/cover/nat_t.jpg
-    title: "内网穿透"
-    excerpt: "分享内网穿透的实战操作和技巧"
-    url: "/categories/NAT-T/"
+    title: "飞牛"
+    excerpt: "飞牛使用心得"
+    url: "/categories/fn/"
     btn_label: "详情"
     btn_class: "btn--primary"
 #   - image_path: assets/images/default_posts_cover.jpg

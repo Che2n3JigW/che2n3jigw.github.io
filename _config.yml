@@ -65,6 +65,9 @@ author:
       - label: "GitHub"
         icon: "fab fa-fw fa-github"
         url: "https://github.com/Che2n3JigW"
+      - label: "che2n3jigw@163.com"
+        icon: "fa-solid fa-envelope"
+        url: "mailto:che2n3jigw@163.com"
 
 # 页脚
 footer:

@@ -16,13 +16,13 @@ header:
   overlay_image: /assets/images/index/header.jpg
 
 feature_row:
-  - image_path: assets/images/default_posts_cover.jpg
+  - image_path: assets/images/index/cover/env.jpg
     title: "环境搭建"
     excerpt: "开发环境搭建"
     url: "/categories/Env/"
     btn_label: "详情"
     btn_class: "btn--primary"
-  - image_path: assets/images/default_posts_cover.jpg
+  - image_path: assets/images/index/cover/nat_t.jpg
     title: "内网穿透"
     excerpt: "分享内网穿透的实战操作和技巧"
     url: "/categories/NAT-T/"

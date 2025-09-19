@@ -1,12 +1,8 @@
 ---
 categories: FN
 toc: true
-title: Actual Budget
+title: Actual Budget 记账 - Docker Compose 安装指南
 ---
-
-
-
-# Actual Budget 记账 - Docker Compose 安装指南
 
 ## 概述
 

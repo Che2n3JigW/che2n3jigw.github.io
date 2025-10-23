@@ -22,18 +22,23 @@ feature_row:
     url: "/categories/Env/"
     btn_label: "详情"
     btn_class: "btn--primary"
+
   - image_path: assets/images/index/cover/nat_t.jpg
     title: "飞牛"
     excerpt: "飞牛使用心得"
     url: "/categories/fn/"
     btn_label: "详情"
     btn_class: "btn--primary"
-#   - image_path: assets/images/default_posts_cover.jpg
-#     title: "安卓"
-#     excerpt: "记录 Android 应用开发中的实践经验、踩坑总结和优化技巧"
-#   - image_path: assets/images/default_posts_cover.jpg
-#     title: "工具"
-#     excerpt: "分享开发过程常用的工具与技巧"
+
+  - image_path: assets/images/index/cover/android.jpg
+    title: "Android"
+    excerpt: "记录 Android 应用开发中的实践经验、踩坑总结和优化技巧"
+    url: "/categories/Android/"
+    btn_label: "详情"
+    btn_class: "btn--primary"
+  # - image_path: assets/images/default_posts_cover.jpg
+  #   title: "工具"
+  #   excerpt: "分享开发过程常用的工具与技巧"
 ---
 
 {% include feature_row id="intro" type="center" %}

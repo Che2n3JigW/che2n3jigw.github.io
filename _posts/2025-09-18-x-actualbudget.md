@@ -1,6 +1,7 @@
 ---
 categories: FN
 toc: true
+toc_sticky: true
 title: Actual Budget 记账 - Docker Compose 安装指南
 ---
 

@@ -306,3 +306,112 @@ toc_sticky: true
 | `setTlsAlpnProtocols()`  | 设置 ALPN 协议            | 可选          |
 | `setTlsEllipticCurves()` | 设置椭圆曲线              | 可选          |
 | `createIceServer()`      | 创建最终的 IceServer 对象 | Builder 结束  |
+
+
+
+# DataChannel
+
+`DataChannel` 是 WebRTC 用于 **点对点发送数据的通道**，类似于 TCP/UDP 的抽象，但运行在 WebRTC 的 SCTP 上。
+ 它允许发送文本或二进制数据，并支持状态管理、缓冲和观察者回调。
+
+`DataChannel` 是 `PeerConnection` 的一部分，可以通过 `PeerConnection.createDataChannel()` 创建。
+
+
+
+1. 成员变量
+
+   | 字段                | 作用                                                         |
+   | ------------------- | ------------------------------------------------------------ |
+   | `nativeDataChannel` | C++ 层 DataChannel 指针                                      |
+   | `nativeObserver`    | C++ 层观察者指针，用于接收回调事件（如 onMessage/onStateChange） |
+
+2. 构造函数
+
+   ```java
+   @CalledByNative
+   public DataChannel(long nativeDataChannel) {
+       this.nativeDataChannel = nativeDataChannel;
+   }
+   ```
+
+   - 通过 JNI 创建 Java DataChannel 实例时调用
+
+   - 绑定已有的 nativeDataChannel 指针
+
+3. 观察者
+
+   | 方法                 | 功能                                       |
+   | -------------------- | ------------------------------------------ |
+   | `registerObserver`   | 注册一个回调 observer，替换之前的 observer |
+   | `unregisterObserver` | 注销当前 observer                          |
+
+4. 通道属性查询
+
+   | 方法               | 说明                                                        |
+   | ------------------ | ----------------------------------------------------------- |
+   | `label()`          | DataChannel 名称                                            |
+   | `id()`             | DataChannel ID（0~65535）                                   |
+   | `state()`          | DataChannel 状态：`CONNECTING`, `OPEN`, `CLOSING`, `CLOSED` |
+   | `bufferedAmount()` | 尚未发送到网络的字节数（队列长度）                          |
+
+5. 发送与关闭
+
+   **发送数据**
+
+   ```java
+   public boolean send(Buffer buffer)
+   ```
+
+   - 将 Buffer 数据发送到远端
+   - 支持文本或二进制（`buffer.binary`）
+   - 会从 `ByteBuffer` 复制数据到 byte[] 再调用 JNI
+
+   ------
+
+   **关闭通道**
+
+   ```java
+   public void close()
+   ```
+
+   - 调用 JNI `nativeClose()`
+   - 状态变为 `CLOSING → CLOSED`
+
+6. 资源释放
+
+   ```java
+   public void dispose()
+   ```
+
+   - 释放 C++ 对象的引用 JniCommon.nativeReleaseRef(nativeDataChannel)
+
+   - 将 nativeDataChannel 置为 0
+
+   - checkDataChannelExists() 会在后续调用中检测 DataChannel 是否已释放
+
+
+
+## Init
+
+`DataChannel.Init` 是一个 **配置类**，用于初始化 `DataChannel` 时指定其行为参数。
+ 它对应 WebRTC 中 **WebIDL 的 RTCDataChannelInit**，控制了数据通道的可靠性、顺序性和协议等属性。
+
+| 字段                  | 作用                                |
+| --------------------- | ----------------------------------- |
+| `ordered`             | 是否保证消息顺序传输                |
+| `maxRetransmitTimeMs` | 最大重传时间（毫秒），-1 表示未指定 |
+| `maxRetransmits`      | 最大重传次数，-1 表示未指定         |
+| `protocol`            | 子协议，用于应用层区分              |
+| `negotiated`          | 是否由应用层协商 ID，而非自动分配   |
+| `id`                  | 数据通道 ID，-1 表示自动分配        |
+
+## Observer 
+
+`DataChannel.Observer` 是一个 **接口（Interface）**，用于接收 `DataChannel` 的回调事件。
+ 每个 `DataChannel` 都可以注册一个 `Observer`，当通道状态、缓冲区或消息变化时，会触发对应方法。
+
+| 方法                                          | 参数                                       | 作用                                                         |
+| --------------------------------------------- | ------------------------------------------ | ------------------------------------------------------------ |
+| `onBufferedAmountChange(long previousAmount)` | `previousAmount`：变化前缓冲区大小（字节） | 当 `DataChannel` 的待发送数据量发生变化时触发，可用于流量控制或 UI 更新 |
+| `onStateChange()`                             | 无                                         | 当通道状态发生变化时触发，如 `CONNECTING` → `OPEN` → `CLOSING` → `CLOSED` |
+| `onMessage(Buffer buffer)`                    | `Buffer buffer`：收到的数据                | 当收到远端发送的消息时触发。注意：`buffer.data` 会在方法返回后释放，如果需要异步处理数据，要先拷贝 |

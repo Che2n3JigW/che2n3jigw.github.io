@@ -19,7 +19,7 @@ name: "che2n3jigw"
 description: "网站描述."
 # 网站网址
 url: "https://che2n3jigw.github.io"
-teaser: /assets/images/default_posts_cover.jpg
+# teaser: /assets/images/default_posts_cover.jpg
 # 网站刊头标题
 masthead_title: "欢迎光临"
 

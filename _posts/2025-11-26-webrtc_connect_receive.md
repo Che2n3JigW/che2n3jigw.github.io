@@ -4,6 +4,7 @@ title: WebRTC 接收端连接流程
 tags: webrtc
 toc: true
 toc_sticky: true
+excerpt: 接收端通过 SignalingHandler 与信令服务器交互，PeerConnectionHandler 管理 WebRTC 连接，实现远端 SDP 和 ICE Candidate 处理及媒体轨道播放。
 ---
 
 {% 

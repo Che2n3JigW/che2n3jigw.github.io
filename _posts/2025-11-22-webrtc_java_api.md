@@ -4,6 +4,7 @@ tags: webrtc
 title: WebRTC Java API 讲解
 toc: true
 toc_sticky: true
+excerpt: WebRTC 的 PeerConnectionFactory、PeerConnection 和 DataChannel 分别负责底层资源管理、点对点连接和数据通道，实现音视频流、数据传输及连接状态管理。
 ---
 
 

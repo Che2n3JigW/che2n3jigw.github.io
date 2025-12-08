@@ -64,10 +64,13 @@ author:
   links:
       - label: "GitHub"
         icon: "fab fa-fw fa-github"
-        url: "https://github.com/Che2n3JigW"
+        url: "https://github.com/che2n3jigw"
       - label: "che2n3jigw@163.com"
         icon: "fa-solid fa-envelope"
         url: "mailto:che2n3jigw@163.com"
+      - label: "bilibili"
+        icon: "fa-solid fa-video"
+        url: "https://space.bilibili.com/3546789930076888"
 
 # 页脚
 footer:
@@ -75,7 +78,10 @@ footer:
   links:
       - label: "GitHub"
         icon: "fab fa-fw fa-github"
-        url: "https://github.com/Che2n3JigW"
+        url: "https://github.com/che2n3jigw"
+      - label: "bilibili"
+        icon: "fa-solid fa-video"
+        url: "https://space.bilibili.com/3546789930076888"
 
 
 # 文章输出路径

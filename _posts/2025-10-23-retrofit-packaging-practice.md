@@ -82,10 +82,12 @@ private val mJsonFactory by lazy {
 ```
 
 **特点：**
-
 - 类型安全的序列化
 - 自动忽略多余字段，避免解析失败
 - 支持 Kotlin 协程原生
+
+**序列化框架选型：**虽然 Moshi 与 Retrofit 集成更"原汁原味"，但 Kotlinx-serialization 在现代 Kotlin 项目中的综合优势更明显。特别是对于纯 Kotlin 项目，我推荐使用 Kotlinx-serialization，它能提供更好的类型安全和更现代的 Kotlin 开发体验。详情请参考[现代JSON序列化框架的抉择](https://che2n3jigw.github.io/android/serialization-comparison/)
+{: .notice--success}
 
 ## 架构设计
 
@@ -105,7 +107,6 @@ fun getRetrofit(
 ```
 
 **缓存策略：**
-
 - 首次请求创建实例并缓存
 - 后续请求直接使用缓存
 - 支持手动清除缓存（clearCache = true）
